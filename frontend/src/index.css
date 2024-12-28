@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+*{
+  margin: 10px;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+/* Container Styling */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items:start; 
+  margin-top: 20px; 
+}
+.poppins {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #f61a3e; 
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); 
+  background: linear-gradient(90deg, #fa4462, #fa8dc0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+.poppins:hover {
+  transform: scale(1.05);
+}
+
+/* Tagline Styling */
+.dancing-script {
+  font-family: "Dancing Script", serif;
+  font-size: 18px;
+  color: #fa4462;
+  font-weight: 400;
+  margin-top: -10px;
+  text-align: center;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1); 
+  transition: color 0.3s ease;
+}
+
+.dancing-script:hover {
+  text-shadow: 2px 2px 8px rgb(255, 82, 148); 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .poppins {
+    font-size: 40px;
+  }
+
+  .dancing-script {
+    font-size: 18px;
+  }
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a{
+  position: relative;
+  text-decoration: none;
+  color: #fa4462;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a::after{
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #fa4462;
+  transition: width 0.5s ease-in-out;
+}
+
+.nav-links a:hover::after{
+  width: 100%;
+}
+
+.right-sec{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.sign-in-btn{
+  padding: 10px 30px;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fa4462;
+  border: solid 1.5px #fa4462;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.icon{
+  font-size: 30px;
+}
