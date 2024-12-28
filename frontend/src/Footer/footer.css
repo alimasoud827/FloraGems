@@ -1,0 +1,134 @@
+.footer{
+  display: grid;
+  background: linear-gradient(to bottom, #f7f7f7, #e2c1c1,#e6acac);
+}
+.footer-main{
+  display: flex;
+  justify-content: space-between;
+}
+.left-footer{
+  width: 600px;
+  margin: 0;
+}
+.left-footer .logo-container{
+  margin-top: 10px;
+}
+.desc-p{
+  font-size: 14px;
+  line-height: normal;
+}
+.left-footer .socials{
+  display: flex;
+}
+.left-footer .socials .social-icon{
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 40px;
+  margin: 0;
+}
+.email{
+  font-size: 14px;
+  text-decoration: none;
+  margin: 0;
+  color: black;
+  transition: all 0.4s;
+}
+.email:hover{
+  text-decoration: underline;
+  color: #fa4462;
+}
+.middle-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.footer-nav{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+.right-footer{  
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right-footer .cont{
+  display: inline-flex;
+  gap: 5px;
+}
+
+.right-footer .cont p{
+  margin: 0;
+  text-decoration: underline;
+}
+.right-footer .cont .tell-icon{
+  font-size: 25px;
+  margin: 0;
+}
+.right-footer .dev a{
+  text-decoration: underline;
+  padding: 0;
+  color: rgb(90, 85, 85);
+}
+.line{
+  height: 20px;
+  width: 80%;
+  border-bottom: solid 1px black; 
+  margin-bottom: 30px;
+  margin-left: 120px;
+}
+.copy-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy-right{
+  font-size: 14px;
+}
+.dev-icon{ 
+  font-size: 30px;
+  border: solid 1px grey;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px #2d2224;
+  color: #fa4462;
+  cursor: pointer;
+}
+.dev-icon p{
+  font-size: 12px;
+  display: inline;
+  margin: 0;
+  color: black;
+}
+.dev {
+  position: relative;
+}
+.developer-info {
+  bottom: 50px;
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fa4462;
+  transition: opacity 1.0s ease, visibility 1.0s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+.dev:hover .developer-info{
+  display: block;
+  opacity: 1;
+}
+.dev-icons{
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+}
+.dev .dev-icons:hover{
+  color: #fa4462;
+}
