@@ -1,0 +1,97 @@
+.cart-collection{
+  display: grid;
+  width: 80%;
+}
+.cart-row {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  gap: 50px;
+}
+.coll {
+  width: 250px;
+  margin: 0;
+}
+.cart-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.totals-section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.totals-left{
+  display: grid;
+  min-width: 600px;
+}
+.totals-left h3{
+  font-weight: 600;
+  font-size: 24px;
+}
+.subtotals-div{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.subtotals-line{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.subtotals-line h5{
+  font-size: 18px;
+}
+.totals-left button{
+  height: 40px;
+  width: 250px;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  background-color: #fa4462;
+  box-shadow: 0 0 6px #fa4462;
+  transition: all 0.8s;
+}
+.totals-left button:hover{
+  color: #fa4462;
+  border: 1px solid #fa4462;
+  background-color: #ffffff;
+  box-shadow: 0 0 6px #fa4462;
+}
+.totals-right{
+  width: 400px;
+}
+.totals-right p{
+  color: gray;
+  font-size: 14px;
+}
+.totals-right div{
+  display: flex;
+  align-items: start;
+}
+.totals-right input{
+  background-color: #f6ebeb;
+  height: 40px;
+  flex: 1;
+  margin: 0;
+  padding: 8px;
+  font-size: 16px;
+}
+.totals-right input:hover{
+  box-shadow: 0 0 4px #ffbdc8;
+}
+.totals-right button{
+  height: 40px;
+  color: white;
+  width: 100px;
+  margin: 0;
+  background-color: black;
+}
+.totals-right button:hover{
+  opacity: 0.8;
+}
