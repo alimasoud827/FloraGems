@@ -21,7 +21,9 @@ function App() {
               cart={cart}
               setCart={setCart}   />} 
             />
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<Cart
+              cart={cart}
+              setCart={setCart}  />} />
         </Routes>
         <Footer />
       </CartProvider>
