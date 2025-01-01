@@ -22,7 +22,7 @@ const TopBody = () => {
   return (
     <div className='container'>
       <div className='div-left'>
-        <h1>Elegance meets beauty <br /> Sparkle with FloraGems today!s</h1>
+        <h1>Elegance meets beauty <br /> Sparkle with FloraGems today!</h1>
         <p>At FloraGems, we bring you the perfect blend of timeless elegance and natural beauty. Discover our exquisite collection of handcrifted jewellery and vibrant flowers, curated to add charm to your special moments. Whenever you're celebrating love, We offer something truly unique to make every occasion unforgetteble.</p>
         <a href="#collection">View Collection</a>
       </div>

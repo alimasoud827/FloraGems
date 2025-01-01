@@ -4,6 +4,9 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+  margin-top: 100px;
+}
 
 *{
   margin: 10px;
@@ -11,7 +14,7 @@ html {
   font-family: 'Poppins';
 }
 
-/* Container Styling */
+/**/
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -35,7 +38,7 @@ html {
   transform: scale(1.05);
 }
 
-/* Tagline Styling */
+
 .dancing-script {
   font-family: "Dancing Script", serif;
   font-size: 18px;
@@ -51,7 +54,6 @@ html {
   text-shadow: 2px 2px 8px rgb(255, 82, 148); 
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .poppins {
     font-size: 40px;
@@ -98,15 +100,47 @@ html {
   gap: 15px;
 }
 .sign-in-btn{
-  padding: 10px 30px;
+  padding: 10px 20px;
   border-radius: 20px;
   background-color: transparent;
   color: #fa4462;
   border: solid 1.5px #fa4462;
   font-weight: 500;
   font-size: 16px;
+  transition: all 0.3s;
+}
+.sign-in-btn:hover{
+  background-color: #fa4462;
+  color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 30px;
+}
+.cart-icon-cont{
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #fa4462;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }

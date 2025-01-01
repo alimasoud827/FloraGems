@@ -1,9 +1,9 @@
 import React from 'react'
 import { assets } from '../assets/assets';
 import StarRating from './StarRating';
-import { IoMdAdd } from "react-icons/io";
+import AddToCart from './addToCart';
 
-const MainBody = () => {
+const MainBody = ({ cart, setCart }) => {
   const rating = 3.5;
   
   return (
@@ -12,7 +12,10 @@ const MainBody = () => {
       <div id='collection' className='collection'>
         {assets.map((asset) => (
           <div key={asset.id} className='one-cont'>
-            <div className='add'><IoMdAdd className='addIcon' /></div>
+            <AddToCart 
+              assetId={asset.id}
+              cart={cart}
+              setCart={setCart} />
             <img src={asset.value} alt={asset.name} />
             <div className='cont-details'>
               <div className='nameRate'>
