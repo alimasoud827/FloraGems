@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import sendToCloud from '../Cloud/Cloud';
+import uploadToCloud from '../Cloud/Cloud';
 
-
-sendToCloud();
 
 const AddContent = () => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState('');
+
+  uploadToCloud();
 
   const handleFileChange = (e) => {
     const file = e.target.files[[0]];
@@ -28,7 +28,7 @@ const AddContent = () => {
       setImage(null);
       setError('');
     }
-    console.log(<img>{image}</img>);
+    console.log(<img alt=''>{image}</img>);
   };
 
   return (
