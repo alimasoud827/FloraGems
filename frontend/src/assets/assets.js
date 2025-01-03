@@ -2,6 +2,7 @@ import bac from './bac.webp';
 import bac_1 from './bac1.webp';
 import bac_2 from './bac2.webp'; 
 import bac_3 from './bac3.webp';
+import profilePic from './profilePic.webp';
 
 export const assets = [
   {
@@ -33,3 +34,5 @@ export const assets = [
     description: "A rare and exotic flower, known for its striking appearance and fragrance.",
   },
 ];
+
+export default profilePic;

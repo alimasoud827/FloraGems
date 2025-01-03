@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './cart.css'
 
 const CartLine = ({ items, title, price, quantity, total, remove }) => {
