@@ -17,16 +17,30 @@ pageRouter.get('/checkout', (req, res) => {
 pageRouter.get('/myorders', async (req, res) => {
   res.send('This is my orders page');
 });
-pageRouter.get('/admin', async (req, res) => {
+pageRouter.post('/admin/add', async (req, res) => {
+  try {
+    const { productName, price, productDescription, imageURL} = req.body;
 
-  const product = new Product({ 
-    name: 'product1',
-    price: 100,
-    description: 'This is product1',
-    imageURL: 'http://www.google.com/product1.jpg',
-   });
-  await product.save();
-  res.send('This is admin page');
+    if (!productName || !price || !productDescription || !imageURL) {
+      return res.status(400).send('All fields are required');
+    }
+    const newProduct = new Product({
+      productName,
+      price,
+      productDescription,
+      imageURL,
+    });
+
+    await newProduct.save(); 
+
+    res.status(201).json({
+      message: 'Product added successfully'
+    });
+    console.log('Received Product:', newProduct);   
+  } catch (error) {
+    console.error('Error saving product:', error);
+    res.status(500).send('Internal server error');
+  }
 });
 
 export default pageRouter;

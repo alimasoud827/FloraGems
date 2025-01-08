@@ -1,67 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import uploadToCloud from '../Cloud/Cloud';
-
+import React, { useState } from 'react';
+import axios from "axios";
 
 const AddContent = () => {
   const [image, setImage] = useState(null);
   const [productDetails, setProductDetails] = useState({
-    productUrl: "",
+    imageURL: "",
     productName: "",
+    productDescription: "",
     price: "",
-    details: "",
   });
-  const [imageFile, setImageFile] = useState(null);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    console.log('Updated product details:', productDetails)
-  }, [productDetails]);
+  const [backendMess, setBackendMess] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
-    if (file){
+    if (file) {
       if (!file.type.includes('image/')) {
         setError('Please upload an image file');
         setImage(null);
-        setImageFile(null);
         return;
       }
 
       const reader = new FileReader();
       reader.onload = () => {
         setImage(reader.result);
-        setImageFile(file);
         setError('');
+        setProductDetails((prevDetails) => ({
+          ...prevDetails,
+          imageURL: reader.result,
+        }));
       };
       reader.readAsDataURL(file);
     } else {
       setImage(null);
-      setImageFile(null);
       setError('');
     }
   };
-
-  const handleUpload = async () => {
-    if(!imageFile) {
-      alert('No imageselected for upload');
-      return;
-    }
-
-    try {
-      const uploadResponse = await uploadToCloud(imageFile);
-      console.log('Uploaded Image URL:', uploadResponse);
-      
-    } catch (error) {
-      console.error('Error uloading image:', error);
-    }
-  }
 
   const checkLink = (event) => {
     const linkUrl = event.target.value;
     if (linkUrl) {
       setImage(linkUrl);
-      setImageFile(linkUrl);
       setError('');
     }
   };
@@ -73,21 +54,47 @@ const AddContent = () => {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/admin/add", productDetails);
+
+      setProductDetails({
+        productName: "",
+        price: "",
+        productDescription: "",
+        productImageUrl: "",
+      });
+      setImage(null);
+      setError("");
+      setBackendMess(response.data.message);
+      setShowPopup(true);
+
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
+  };
+
   return (
-    <div className='add-content-sec'>
+    <form onSubmit={handleSubmit} className='add-content-sec'>
       <p>Upload Image</p>
       <input 
         type='file' 
-        rel='uploadphoto'
         className='upload-input' 
-        onChange={handleFileChange}/>
+        onChange={handleFileChange}
+      />
       <p>Or Paste Link</p>
-      <input className='product-name'
+      <input 
         type="text" 
         placeholder='Paste Link of no Image'
-        value={productDetails.productUrl}
+        value={productDetails.imageURL}
         onBlur={checkLink}
-        onChange={(e) => handleInputChange("productUrl", e.target.value)} 
+        onChange={(e) => handleInputChange("imageURL", e.target.value)} 
       />
       {error && <p className='error-msg'>{error}</p>}
       <div margin-top='10px'>
@@ -99,15 +106,29 @@ const AddContent = () => {
         )}
       </div>
       <p>Product Name</p>
-      <input type='text' rel='productname' placeholder='Type here' className='product-name' />
+      <input 
+        type='text' 
+        placeholder='Type here' 
+        className='product-name'
+        value={productDetails.productName}
+        onChange={(e) => handleInputChange("productName", e.target.value)}
+      />
+
       <p>Product Description</p>
-      <textarea rel='productdescription' placeholder='Write content here' className='product-description'
-      value={productDetails.productDescription}
-      onChange={(e) => handleInputChange("productDescription", e.target.value)}/>
+      <textarea 
+        placeholder='Write content here' 
+        className='product-description'
+        value={productDetails.productDescription}
+        onChange={(e) => handleInputChange("productDescription", e.target.value)}
+      />
       <div>
         <div>
           <p>Product Category</p>
-          <select rel='productcategory' className='product-category'>
+          <select 
+            className='product-category' 
+            value={productDetails.productCategory}
+            onChange={(e) => handleInputChange("productCategory", e.target.value)}
+          >
             <option value=''>Select</option>
             <option value='Electronics'>Electronics</option>
             <option value='Clothing'>Clothing</option>
@@ -118,17 +139,23 @@ const AddContent = () => {
           <p>Product Price</p>
           <input 
             type='text' 
-            rel='productprice' 
             placeholder='Type here' 
             className='product-price' 
-            value={productDetails.productPrice}
-            onChange={(e) => handleInputChange("productPrice", e.target.value)}
-            />
+            value={productDetails.price}
+            onChange={(e) => handleInputChange("price", e.target.value)}
+          />
         </div>
       </div>
-      <button className='add-btn' onClick={() => handleUpload()}>Add</button>
-    </div>
-  )
+      <button type='submit' className='add-btn'>Add</button>
+      {backendMess && 
+        <div className={`popup ${showPopup ? 'show' : ''}`}>          
+          <div class="popup-content">
+            <p>{backendMess}</p>
+          </div>
+        </div>
+      }
+    </form>
+  );
 }
 
 export default AddContent;
