@@ -1,7 +1,7 @@
 import { IoMdAdd } from "react-icons/io";
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const AddToCart = ({ assetId, cart, setCart }) => {
+const AddToCart = ({ assetId, setCart }) => {
   const handleAddToCart = (assetId) => {
     setCart((prevCart) => {
       console.log(prevCart);
@@ -16,10 +16,6 @@ const AddToCart = ({ assetId, cart, setCart }) => {
       }
     });
   };
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
   return (
     <div className="add" onClick={() => handleAddToCart(assetId)}>
       <IoMdAdd className="addIcon" />

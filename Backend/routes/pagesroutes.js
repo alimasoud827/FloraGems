@@ -14,14 +14,21 @@ pageRouter.get('/checkout', (req, res) => {
   res.send('This is checkout page');
 });
 
-pageRouter.get('/myorders', async (req, res) => {
-  res.send('This is my orders page');
+pageRouter.get('/admin/list', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    res.status(500).send('Internal Server Error');
+  }
 });
+
 pageRouter.post('/admin/add', async (req, res) => {
   try {
-    const { productName, price, productDescription, imageURL} = req.body;
+    const { productName, price, productDescription, imageURL, ratings, productCategory  } = req.body;
 
-    if (!productName || !price || !productDescription || !imageURL) {
+    if (!productName || !price || !productDescription || !imageURL || ratings || productCategory ) {
       return res.status(400).send('All fields are required');
     }
     const newProduct = new Product({
@@ -29,6 +36,8 @@ pageRouter.post('/admin/add', async (req, res) => {
       price,
       productDescription,
       imageURL,
+      ratings,
+      productCategory,
     });
 
     await newProduct.save(); 

@@ -1,24 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CartLine from './CartLine';
-import { assets } from '../assets/assets';
 import { MdDeleteForever } from "react-icons/md";
+import Subtotals from './Subtotals';
 
-const Cart = ({ cart, setCart }) => {
-  const [cartItems, setCartItems] = useState(() => {
-    const initialCartItems = [];
-    cart.forEach(cartItem => {
-      const item = assets.find(asset => asset.id === cartItem.id);
-      
-      if(item) {
-        initialCartItems.push({
-          ...item,
-          quantity: cartItem.quantity
-        });
-      }
-    });
-    return initialCartItems;
-  });
-
+const Cart = ({ setCart, setCartItems, cartItems }) => {
   const add = (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
@@ -48,11 +33,6 @@ const Cart = ({ cart, setCart }) => {
     return (price * quantity).toFixed(2);
   };
 
-  const calculateSubtotal = (cartItems) => {
-    return cartItems.reduce((acc, item) => {
-      return acc + (item.price * item.quantity);
-    }, 0);
-  }
   return (
     <div className='cart'>
       <div className='cart-collection'>
@@ -86,23 +66,10 @@ const Cart = ({ cart, setCart }) => {
         }
       </div>
       <div className='totals-section'>
-        <div className="totals-left">
+        <div className="totals-left">          
           <h3>Cart Totals</h3>
-          <div className='subtotals-div'>
-            <div className='subtotals-line'>
-              <p>Subtotal</p>
-              <p>Ksh. {calculateSubtotal(cartItems)}</p>
-            </div>
-            <div className='subtotals-line'>
-              <p>Delivery Fee</p>
-              <p>Ksh. {cartItems.length !== 0 ? 200 : 0 }</p>
-            </div>
-            <div className='subtotals-line'>
-              <h5>Total</h5>
-              <h5>Ksh. {cartItems.length !== 0 ? (calculateSubtotal(cartItems)) + 200 : 0 }</h5>
-            </div>
-          </div>
-          <button>Proceed to Payment</button>
+          <Subtotals cartItems={cartItems} />
+          <a href='/order' className='proceedBtn' >Proceed to Payment</a>
         </div>
         <div className="totals-right">
           <p>If you have promo code, Enter code here</p>

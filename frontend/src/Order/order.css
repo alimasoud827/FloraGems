@@ -1,0 +1,117 @@
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px;
+}
+
+.delivery-info,
+.checkout-form {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.delivery-info {
+  margin-right: 10px;
+}
+
+.checkout-form {
+  margin-left: 10px;
+  transition: all 0.3;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.payment-icons img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.payment-summary {
+  margin-top: 20px;
+}
+
+.payment-summary div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.total {
+  font-weight: bold;
+}
+.shipping-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  max-width: 600px;
+  background-color: #ffffff;
+  transition: all 0.3s;
+}
+
+.shipping-heading {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.shipping-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.shipping-icon {
+  color: red;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.name-phone {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.phone {
+  margin-left: auto;
+  font-weight: bold;
+}
+
+.address {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #555;
+}

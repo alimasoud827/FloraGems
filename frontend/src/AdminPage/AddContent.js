@@ -8,6 +8,8 @@ const AddContent = () => {
     productName: "",
     productDescription: "",
     price: "",
+    ratings: 0,
+    productCategory: '',
   });
   const [error, setError] = useState('');
   const [backendMess, setBackendMess] = useState("");
@@ -123,16 +125,27 @@ const AddContent = () => {
       />
       <div>
         <div>
-          <p>Product Category</p>
-          <select 
-            className='product-category' 
+          <p>Ratings</p>
+          <input 
+            type="number" 
+            min="0" 
+            max="5" 
+            step="0.5" 
+            placeholder="Enter ratings (0-5)"
+            value={productDetails.ratings}
+            onChange={(e) => handleInputChange("ratings", parseFloat(e.target.value) || 0)}
+          />
+        </div>
+        <div>
+          <p>Category</p>
+          <select
+            className="product-category"
             value={productDetails.productCategory}
             onChange={(e) => handleInputChange("productCategory", e.target.value)}
           >
-            <option value=''>Select</option>
-            <option value='Electronics'>Electronics</option>
-            <option value='Clothing'>Clothing</option>
-            <option value='Books'>Books</option>
+            <option value="">Select</option>
+            <option value="Jewellery">Jewellery</option>
+            <option value="Flowers">Flowers</option>
           </select>
         </div>
         <div>

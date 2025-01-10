@@ -2,8 +2,10 @@ import bac from './bac.webp';
 import bac_1 from './bac1.webp';
 import bac_2 from './bac2.webp'; 
 import bac_3 from './bac3.webp';
+import mPesaLogo from './mPesaLogo.png'
 import profilePic from './profilePic.webp';
 
+export { mPesaLogo };
 export const assets = [
   {
     id: 1,

@@ -1,9 +1,8 @@
-
 .cart-collection{
   display: grid;
   width: 80%;
 }
-.cart-row {
+.cart-row{
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -58,7 +57,18 @@
   box-shadow: 0 0 6px #fa4462;
   transition: all 0.8s;
 }
-.totals-left button:hover{
+.proceedBtn{
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fa4462;
+  width: 50%;
+  text-align: center;
+}
+.proceedBtn:hover{
   color: #fa4462;
   border: 1px solid #fa4462;
   background-color: #ffffff;
@@ -96,7 +106,6 @@
 .totals-right button:hover{
   opacity: 0.8;
 }
-
 .empty-cart{
   display: flex;
   flex-direction: column;
