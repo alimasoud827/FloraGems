@@ -1,30 +1,43 @@
-import React from 'react';
-import { assets } from '../assets/assets';
-import StarRating from './StarRating';
-import AddToCart from './addToCart';
+import React, { useEffect, useState } from 'react';
+import { fetchProducts } from '../HandleProducts';
+import OneBox from './OneBox';
 
-const Flowers = ({ cart, setCart }) => {  
-  const ratings = 3.5;
+const Flowers = ({ cart, setCart }) => {   
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetchProducts(setProducts, setLoading, setError);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loader">
+        <l-line-spinner size="40" stroke="3" speed="1" color="#fa4462"></l-line-spinner>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+  const flowerProducts = products.filter((product) => product.productCategory === 'Flowers');
   return (
     <div>
       <h3 id="flowers">Flower Collection</h3>
       <div className="collection">
-        {assets.map((asset) => (
-          <div key={asset.id} className="one-cont">
-            <AddToCart 
-              assetId={asset.id}
-              cart={cart}
-              setCart={setCart} />
-            <img src={asset.value} alt={asset.name} />
-            <div className="cont-details">
-              <div className="nameRate">
-                <p className="name">{asset.name}</p>
-                <StarRating rating={ratings} />
-              </div>
-              <p className="description">{asset.description}</p>
-              <p className="price">Ksh. {asset.price}</p>
-            </div>
-          </div>
+        {flowerProducts.map((product) => (
+          <OneBox
+            id={product._id}
+            cart={cart}
+            setCart={setCart}
+            name={product.productName}
+            imageURL={product.imageURL}
+            description={product.productDescription}
+            rating={product.ratings}
+            price={product.price}
+          />
         ))}
       </div>
     </div>

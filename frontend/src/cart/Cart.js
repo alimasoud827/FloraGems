@@ -39,7 +39,7 @@ const Cart = ({ setCart, setCartItems, cartItems }) => {
         <CartLine 
           items={'Items'}
           title={'Title'}
-          price={'Price'}
+          price={'Price (Ksh)'}
           quantity={'Quantity'}
           total={'Total'}
           remove={'Remove'}
@@ -50,12 +50,12 @@ const Cart = ({ setCart, setCartItems, cartItems }) => {
               key={item.id}
               items={<img src={item.value} alt={item.name} className='cart-image' />}
               title={item.name}
-              price={`$${item.price}`}
+              price={`${item.price}`}
               quantity={
                 <>
-                  <button onClick={() => minus(item.id)}>-</button>
+                  <button className='quant-btn' onClick={() => minus(item.id)}>-</button>
                   {item.quantity}
-                  <button onClick={() => add(item.id)}>+</button>
+                  <button className='quant-btn' onClick={() => add(item.id)}>+</button>
                 </>
               }
               total={`$${calculateTotal(item.price, item.quantity)}`}

@@ -33,7 +33,7 @@ const Footer = () => {
         <div className='right-footer'>
           <div>
             <h2>GET IN TOUCH</h2>
-            <div className='cont'><IoCallOutline className='tell-icon' /><p>+2547-8161-2419</p></div>
+            <div className='cont'><IoCallOutline className='tell-icon' /><p>+2547-9930-9978</p></div>
           </div>
           <div className='dev'>
             <p>CONTACT DEVELOPER</p>

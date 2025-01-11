@@ -1,35 +1,47 @@
-import React from 'react'
-import { assets } from '../assets/assets';
-import StarRating from './StarRating';
-import AddToCart from './addToCart';
+import React, { useEffect, useState } from 'react';
+import { fetchProducts } from '../HandleProducts';
+import OneBox from './OneBox';
 
-const MainBody = ({ cart, setCart }) => {
-  const rating = 3.5;
-  
+const MainBody = ({ cart, setCart }) => {   
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetchProducts(setProducts, setLoading, setError);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loader">
+        <l-line-spinner size="40" stroke="3" speed="1" color="#fa4462"></l-line-spinner>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div>
-      <h3>Latest Collection</h3>
-      <div id='collection' className='collection'>
-        {assets.map((asset) => (
-          <div key={asset.id} className='one-cont'>
-            <AddToCart 
-              assetId={asset.id}
-              cart={cart}
-              setCart={setCart} />
-            <img src={asset.value} alt={asset.name} />
-            <div className='cont-details'>
-              <div className='nameRate'>
-                <p className='name'>{asset.name}</p>
-                <StarRating rating={rating}/>
-              </div>
-              <p className='description'>{asset.description}</p>
-              <p className='price'>Ksh. {asset.price}</p>
-            </div>
-          </div>
+      <h3 id="flowers">Latest Collection</h3>
+      <div className="collection">
+        {products.slice(0, 4).map((product) => (
+          <OneBox
+            id={product._id}
+            cart={cart}
+            setCart={setCart}
+            name={product.productName}
+            imageURL={product.imageURL}
+            description={product.productDescription}
+            rating={product.ratings}
+            price={product.price}
+          />
         ))}
       </div>
     </div>
-  )
+  );
 };
 
-export default MainBody
+export default MainBody;

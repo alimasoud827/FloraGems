@@ -58,29 +58,38 @@ const AddContent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (!productDetails.productName || !productDetails.price || !productDetails.productDescription || !productDetails.productCategory || !productDetails.ratings) {
+      setError('Please fill in all the fields.');
+      return;
+    }
+  
     try {
       const response = await axios.post("http://localhost:5000/admin/add", productDetails);
-
+  
       setProductDetails({
         productName: "",
         price: "",
         productDescription: "",
-        productImageUrl: "",
+        imageURL: "",
+        ratings: 0,
+        productCategory: '',
       });
       setImage(null);
-      setError("");
+      setError('');
       setBackendMess(response.data.message);
       setShowPopup(true);
-
+  
       setTimeout(() => {
         setShowPopup(false);
       }, 3000);
       
     } catch (error) {
       console.error('Error sending data to backend:', error);
+      setError('Failed to add product. Please try again.');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className='add-content-sec'>
@@ -98,7 +107,7 @@ const AddContent = () => {
         onBlur={checkLink}
         onChange={(e) => handleInputChange("imageURL", e.target.value)} 
       />
-      {error && <p className='error-msg'>{error}</p>}
+      {error && <p className='error-msg' color='red'>{error}</p>}
       <div margin-top='10px'>
         {image && (
           <img 
@@ -160,6 +169,7 @@ const AddContent = () => {
         </div>
       </div>
       <button type='submit' className='add-btn'>Add</button>
+      
       {backendMess && 
         <div className={`popup ${showPopup ? 'show' : ''}`}>          
           <div class="popup-content">

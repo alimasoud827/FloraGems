@@ -115,6 +115,10 @@
   gap: '16px';
 }
 .one-cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   background-color: white;
   border: 1px solid #e1e1e1;
@@ -126,12 +130,20 @@
 
 .one-cont:hover{
   transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 } 
 .one-cont img {
-  width: 100%;
+  width: 90%;
   height: auto;
+  border-radius: 8px;
+  margin: 10px 0;
 }
 .cont-details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -139,9 +151,10 @@
   padding: 15px;
 }
 .one-cont .cont-details .nameRate .name {
-  font-size: 1.4em;
+  font-size: 18px;
   font-weight: 500;
   color: black;
+  margin: 0;
 }
 .one-cont .cont-details p{
   font-size: 0.9em;
@@ -151,11 +164,13 @@
   font-size: 1.2em;
   font-weight: bold;
   color: #fa4462;
+  margin-top: 8px;
 }
 .one-cont .cont-details .nameRate{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   margin: 0;
 }
 .star-icon{
@@ -163,17 +178,18 @@
   margin: 0;
 }
 .add{
- position: absolute;
- right: 4px;
- bottom: 240px;
- width: 40px;
- height: 40px;
- background-color: white;
- display: flex;
- align-items: center;
- justify-content: center;
- border-radius: 50%; 
- transition: transform 0.3s;
+  position: absolute;
+  right: 4px;
+  bottom: 240px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; 
+  transition: transform 0.3s;
+  cursor: pointer;
 }
 .add:hover{
   transform: scale(1.1);
@@ -181,5 +197,5 @@
   color: #fa4462;
 }
 .add .addIcon{
-  font-size: 40px;
+  font-size: 50px;
 }

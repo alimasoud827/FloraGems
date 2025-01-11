@@ -23,12 +23,22 @@ pageRouter.get('/admin/list', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+pageRouter.delete("/admin/delete/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    await Product.findByIdAndDelete(productId);
+    res.status(200).json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete product" });
+  }
+});
+
 
 pageRouter.post('/admin/add', async (req, res) => {
   try {
     const { productName, price, productDescription, imageURL, ratings, productCategory  } = req.body;
 
-    if (!productName || !price || !productDescription || !imageURL || ratings || productCategory ) {
+    if (!productName || !price || !productDescription || !imageURL || !ratings || !productCategory ) {
       return res.status(400).send('All fields are required');
     }
     const newProduct = new Product({
