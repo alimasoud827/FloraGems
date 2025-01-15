@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react';
 import Admin from './AdminPage/Admin.js';
 import { assets } from './assets/assets.js';
 import { loadCartFromLocalStorage, saveCartToLocalStorage } from './LocalStotageUtils.js';
+import AboutUs from './About.js';
+import PolicyPage from './PolicyPage.js';
 
 function App() {
   const [cart, setCart] = useState(loadCartFromLocalStorage());
@@ -49,6 +51,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Body cart={cart} setCart={setCart} />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/policy" element={<PolicyPage />} />
             <Route path="/cart" element={<Cart 
               cart={cart}
               setCart={setCart}

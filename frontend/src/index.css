@@ -144,3 +144,62 @@ body{
   justify-content: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* Smartphones (480px - 767px) */
+@media screen and (max-width: 767px) {
+  /* Logo Section */
+  .logo-container {
+    align-items: center; /* Center-align for better aesthetics */
+    margin-top: 10px;
+  }
+  
+  .poppins {
+    font-size: 30px; /* Reduce font size */
+    text-align: center; /* Center-align text */
+  }
+
+  .dancing-script {
+    font-size: 16px; /* Smaller font size for better readability */
+    text-align: center; 
+    margin-top: 0; /* Adjust spacing */
+  }
+
+  /* Navigation Links */
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    gap: 15px; /* Reduce gap */
+    align-items: center; /* Center-align links */
+  }
+
+  .nav-links a {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  /* Right Section (Sign-In & Icons) */
+  .right-sec {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Adjust spacing */
+  }
+
+  .sign-in-btn {
+    width: 90%; /* Full-width button */
+    padding: 8px 15px;
+    font-size: 14px; /* Smaller font size */
+    border-radius: 15px; /* Adjust border radius */
+  }
+
+  /* Icon Adjustments */
+  .icon {
+    font-size: 24px; /* Smaller icon size */
+  }
+
+  /* Cart Icon */
+  .cart-count {
+    width: 18px;
+    height: 18px;
+    font-size: 10px; /* Smaller font for count */
+    top: -5px;
+    right: -5px;
+  }
+}
+

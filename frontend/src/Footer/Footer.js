@@ -6,7 +6,7 @@ import './footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <div id='contact' className='footer'>
       <div className='footer-main'>
         <div className='left-footer'>
           <div className='logo-container'>
@@ -23,10 +23,10 @@ const Footer = () => {
           <h2>COMPANY</h2>
           <nav>
             <ul className='nav-links footer-nav'>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
               <li><a href="#delivery">Delivery</a></li>
-              <li><a href="#policy">Privacy Policy</a></li>
+              <li><a href="/policy">Privacy Policy</a></li>
             </ul>
           </nav>  
         </div>

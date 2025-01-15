@@ -10,3 +10,11 @@
   align-items: center;
   justify-content: space-between;
 };
+@media screen and (max-width: 767px) {
+  .header {
+    top: 0; /* Align properly for smaller screens */
+    padding: 10px; /* Add some padding for better spacing */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center-align content */
+  }
+}

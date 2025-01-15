@@ -8,7 +8,7 @@ const Header = ({ cart }) => {
     return (
     <div className="header">
       <Left />
-      <Middle />
+      <Middle className="middle-menu" />
       <Right cart={cart} />
     </div>
   )
