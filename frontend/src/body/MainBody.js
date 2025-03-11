@@ -27,12 +27,12 @@ const MainBody = ({ cart, setCart }) => {
     <div>
       <h3 id="flowers">Latest Collection</h3>
       <div className="collection">
-        {products.slice(0, 4).map((product) => (
+        {products.slice().map((product) => (
           <OneBox
-            id={product._id}
+            id={product._id || product.id}
             cart={cart}
             setCart={setCart}
-            name={product.productName}
+            name={product.productName || product.productName}
             imageURL={product.imageURL}
             description={product.productDescription}
             rating={product.ratings}

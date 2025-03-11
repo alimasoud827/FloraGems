@@ -2,31 +2,37 @@ import React from 'react';
 import CartLine from './CartLine';
 import { MdDeleteForever } from "react-icons/md";
 import Subtotals from './Subtotals';
+import { Link } from 'react-router-dom';
 
 const Cart = ({ setCart, setCartItems, cartItems }) => {
   const add = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
+    setCartItems((prev) => {
+      const updatedCartItems = prev.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-    setCart((prev) => prev.map((item) => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+      );
+      setCart(updatedCartItems);
+      return updatedCartItems;
+    });
   };
 
   const minus = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
+    setCartItems((prev) => {
+      const updatedCartItems = prev.map((item) =>
         item.id === id && item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item
-      )
-    );
-    setCart((prev) => prev.map((item) => item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item));
-  }
+      );
+      setCart(updatedCartItems);
+      return updatedCartItems;
+    });
+  };
 
   const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-    setCart((prev) => prev.filter((item) => item.id !== id));
+    setCartItems((prev) => {
+      const updatedCartItems = prev.filter((item) => item.id !== id);
+      setCart(updatedCartItems);
+      return updatedCartItems;
+    });
   };
 
   const calculateTotal = (price, quantity) => {
@@ -44,13 +50,13 @@ const Cart = ({ setCart, setCartItems, cartItems }) => {
           total={'Total'}
           remove={'Remove'}
         />
-        { cartItems.length !== 0 ?
+        { cartItems.length !== 0 ? (
           cartItems.map((item) => (
             <CartLine 
               key={item.id}
-              items={<img src={item.value} alt={item.name} className='cart-image' />}
-              title={item.name}
-              price={`${item.price}`}
+              items={<img src={item.imageURL} alt={item.name} className='cart-image' />}
+              title={item.name || item.productName}
+              price={`Ksh ${item.price.toFixed(2)}`}
               quantity={
                 <>
                   <button className='quant-btn' onClick={() => minus(item.id)}>-</button>
@@ -58,23 +64,25 @@ const Cart = ({ setCart, setCartItems, cartItems }) => {
                   <button className='quant-btn' onClick={() => add(item.id)}>+</button>
                 </>
               }
-              total={`$${calculateTotal(item.price, item.quantity)}`}
+              total={`Ksh ${calculateTotal(item.price, item.quantity)}`}
               remove={<MdDeleteForever onClick={() => removeFromCart(item.id)} />}
             />
           ))
-          : <div className='empty-cart'><h3>Your cart is empty</h3></div>
-        }
+        ) : (
+          <div className='empty-cart'><h3>Your cart is empty</h3></div>
+        )}
       </div>
       <div className='totals-section'>
         <div className="totals-left">          
           <h3>Cart Totals</h3>
           <Subtotals cartItems={cartItems} />
-          <a href='/order' className='proceedBtn' >Proceed to Payment</a>
+          <Link to='/order' className='proceedBtn'>Proceed to Payment</Link>
         </div>
         <div className="totals-right">
           <p>If you have promo code, Enter code here</p>
           <div>
-            <input type="text" name="" placeholder="promo code" /><button>Submit</button>
+            <input type="text" placeholder="promo code" />
+            <button>Submit</button>
           </div>
         </div>
       </div>

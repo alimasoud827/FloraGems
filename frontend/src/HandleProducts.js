@@ -1,4 +1,5 @@
 import axios from "axios";
+import { assets } from "./assets/assets";
 
 
 export const fetchProducts = async (setProducts, setLoading, setError) => {
@@ -16,7 +17,7 @@ export const fetchProducts = async (setProducts, setLoading, setError) => {
     setProducts(sortedProducts);
     setLoading(false);
   } catch (error) {
-    setError('Failed to fetch products');
+    setProducts(assets);
     setLoading(false);
   }
 };

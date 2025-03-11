@@ -4,7 +4,6 @@ import React from 'react';
 const AddToCart = ({ assetId, setCart }) => {
   const handleAddToCart = (assetId) => {
     setCart((prevCart) => {
-      console.log(prevCart);
       const existing = prevCart.find((item) => item.id === assetId);
 
       if (existing) {

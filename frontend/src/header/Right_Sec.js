@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Right = ({ cart }) => {
   const navigate = useNavigate();
-  console.log(cart);
 
   let totalQuantity = 0;
   

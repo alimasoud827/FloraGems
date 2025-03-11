@@ -25,21 +25,17 @@ function App() {
       setCart(savedCart);
     }
   }, [setCart]);
-  
-  const [cartItems, setCartItems] = useState(() => {
-    const initialCartItems = [];
-    cart.forEach(cartItem => {
+
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const updatedCartItems = cart.map(cartItem => {
       const item = assets.find(asset => asset.id === cartItem.id);
-      
-      if(item) {
-        initialCartItems.push({
-          ...item,
-          quantity: cartItem.quantity
-        });
-      }
-    });
-    return initialCartItems;
-  });
+      return item ? { ...item, quantity: cartItem.quantity } : null;
+    }).filter(item => item !== null); // Remove null values
+    
+    setCartItems(updatedCartItems);
+  }, [cart, assets]);
 
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
