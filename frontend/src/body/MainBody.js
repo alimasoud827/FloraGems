@@ -27,7 +27,7 @@ const MainBody = ({ cart, setCart }) => {
     <div>
       <h3 id="flowers">Latest Collection</h3>
       <div className="collection">
-        {products.slice().map((product) => (
+        {products.slice(0, 4).map((product) => (
           <OneBox
             id={product._id || product.id}
             cart={cart}
